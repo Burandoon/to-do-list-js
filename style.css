@@ -1,0 +1,112 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.list {
+    width: 80%;
+    max-width: 900px;
+    min-height: 600px;
+    border: solid 3px black;
+    margin: 50px auto 0;
+}
+
+.list-header {
+    background-color: #000;
+    color: #fff;
+    margin-bottom: 20px;
+    padding: 12px;
+    text-align: center;
+}
+
+.list-form {
+    display: flex;
+    flex-direction: row;
+    margin-inline: auto;
+    width: fit-content;
+    column-gap: 12px;
+    /* padding-inline: 48px; */
+    /* align-items: center; */
+}
+
+.list-form input {
+    display: block;
+    padding: 7px;
+    /* max-width: 600px; */
+    width: 100%;
+}
+
+.list-form-btn:hover {
+    cursor: pointer;
+}
+
+.list-form-btn {
+    width: 34px;
+    align-self: flex-end;
+}
+
+.list-section {
+    margin-block: 50px;
+    padding-inline: 15px;
+}
+
+.list-section h2 {
+    position: relative;
+    width: fit-content;
+    margin-bottom: 12px;
+}
+
+.list-section h2::after {
+    position: absolute;
+    display: block;
+    content: "";
+    width: calc(100% + 10px);
+    background-color: #000;
+    height: 1px;
+    bottom: -7px;
+}
+
+ul {
+    list-style-type: none;
+}
+
+ul li {
+    display: flex;
+    flex-direction: row;
+    column-gap: 7px;
+    margin-block: 10px;
+    border: solid 2px #000;
+    border-radius: 18px;
+    padding: 18px;
+}
+
+.btns-container {
+    display: flex;
+    flex-direction: row;
+    column-gap: 16px;
+    margin-left: auto;
+}
+
+#complete,
+#edit,
+#delete {
+    width: 16px;
+    height: 16px,
+}
+
+#complete:hover,
+#edit:hover,
+#delete:hover {
+    cursor: pointer;
+}
+
+.crossout {
+    text-decoration: line-through;
+}
+
+@media (min-width: 768px) {
+    .list-section {
+        padding-inline: 50px;
+    }
+}
