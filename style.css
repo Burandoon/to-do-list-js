@@ -26,14 +26,11 @@
     margin-inline: auto;
     width: fit-content;
     column-gap: 12px;
-    /* padding-inline: 48px; */
-    /* align-items: center; */
 }
 
 .list-form input {
     display: block;
     padding: 7px;
-    /* max-width: 600px; */
     width: 100%;
 }
 

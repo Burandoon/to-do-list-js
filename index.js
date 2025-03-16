@@ -48,6 +48,15 @@ function createTask() {
         completeBtn.addEventListener("click", function(e) {
             newItemText.classList.toggle("crossout");
         })
+
+        deleteBtn.addEventListener("click", function() {
+            if (tasks.includes(newItemText.textContent)) {
+                console.log("Yep it does")
+                tasks = tasks.filter(task => task !== newItemText.textContent);
+            }
+
+            newItem.remove();
+        })
     }
 }
 
