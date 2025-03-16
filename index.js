@@ -38,24 +38,47 @@ function createTask() {
         toDosList.append(newItem);
         newItem.append(newItemText, btnsContainer);
         btnsContainer.append(completeBtn, editBtn, deleteBtn);
-        newItemText.append(input.value);
+        newItemText.textContent = input.value;
         completeBtn.src="icons/check.svg";
         editBtn.src = "icons/pencil.svg";
         deleteBtn.src = "icons/trash.svg";
 
         input.value = "";
 
-        completeBtn.addEventListener("click", function(e) {
+        completeBtn.addEventListener("click", function() {
             newItemText.classList.toggle("crossout");
+        })
+
+        editBtn.addEventListener("click", function() {
+            let taskUpdate = prompt("Update task", newItemText.textContent);
+
+            if (!taskUpdate.replace(/\s+/, "").length) {
+                return;
+            }
+
+            if (taskUpdate !== null && tasks.includes(newItemText.textContent)) {
+                if (tasks.indexOf(newItemText.textContent !== 1)) {
+                    var index = tasks.indexOf(newItemText.textContent);
+                    tasks[index] = taskUpdate;
+                    newItemText.textContent = taskUpdate;
+                }
+            }
         })
 
         deleteBtn.addEventListener("click", function() {
             if (tasks.includes(newItemText.textContent)) {
-                console.log("Yep it does")
-                tasks = tasks.filter(task => task !== newItemText.textContent);
-            }
+                if (!newItemText.classList.contains("crossout")) {
+                    if (confirm("It appears this task has not been completed.  Do you still wish to remove it?")) {
+                        tasks = tasks.filter(task => task !== newItemText.textContent);
+                        newItem.remove();
+                    }
+                }
 
-            newItem.remove();
+                if (newItemText.classList.contains("crossout")) {
+                    tasks = tasks.filter(task => task !== newItemText.textContent);
+                    newItem.remove();
+                }
+            }
         })
     }
 }
