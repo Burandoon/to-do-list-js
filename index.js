@@ -50,11 +50,17 @@ function createTask() {
         })
 
         editBtn.addEventListener("click", function() {
+            if (newItemText.classList.contains("crossout")) {
+                if (!confirm("It appears this task has been completed.  Do you still wish to edit?")) {
+                    return;
+                }
+            }
+            
             let taskUpdate = prompt("Update task", newItemText.textContent);
 
             if (!taskUpdate.replace(/\s+/, "").length) {
                 return;
-            }
+            }            
 
             if (taskUpdate !== null && tasks.includes(newItemText.textContent)) {
                 if (tasks.indexOf(newItemText.textContent !== 1)) {
