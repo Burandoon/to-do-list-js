@@ -1,9 +1,9 @@
 let tasks = [];
-let input = document.getElementById("task-input");
-let addTaskBtn = document.getElementById("list-form-btn");
-let toDosList = document.getElementById("to-dos-list");
+const input = document.getElementById("task-input");
+const addTaskBtn = document.getElementById("list-form-btn");
+const toDosList = document.getElementById("to-dos-list");
 
-function createTask() {
+createTask = () => {
     if (!input.value.replace(/\s+/, "").length) {
         return;
     }
@@ -45,12 +45,12 @@ function createTask() {
 
         input.value = "";
 
-        completeBtn.addEventListener("click", function() {
-            newItemText.classList.toggle("crossout");
+        completeBtn.addEventListener("click", () => {
+            newItem.classList.toggle("completed");
         })
 
-        editBtn.addEventListener("click", function() {
-            if (newItemText.classList.contains("crossout")) {
+        editBtn.addEventListener("click", () => {
+            if (newItem.classList.contains("completed")) {
                 if (!confirm("It appears this task has been completed.  Do you still wish to edit?")) {
                     return;
                 }
@@ -58,29 +58,29 @@ function createTask() {
             
             let taskUpdate = prompt("Update task", newItemText.textContent);
 
-            if (!taskUpdate.replace(/\s+/, "").length) {
+            if (!taskUpdate.replace(/\s+/, "").length || taskUpdate == null) {
                 return;
             }            
 
             if (taskUpdate !== null && tasks.includes(newItemText.textContent)) {
                 if (tasks.indexOf(newItemText.textContent !== 1)) {
-                    var index = tasks.indexOf(newItemText.textContent);
+                    let index = tasks.indexOf(newItemText.textContent);
                     tasks[index] = taskUpdate;
                     newItemText.textContent = taskUpdate;
                 }
             }
         })
 
-        deleteBtn.addEventListener("click", function() {
+        deleteBtn.addEventListener("click", () => {
             if (tasks.includes(newItemText.textContent)) {
-                if (!newItemText.classList.contains("crossout")) {
+                if (!newItem.classList.contains("completed")) {
                     if (confirm("It appears this task has not been completed.  Do you still wish to remove it?")) {
                         tasks = tasks.filter(task => task !== newItemText.textContent);
                         newItem.remove();
                     }
                 }
 
-                if (newItemText.classList.contains("crossout")) {
+                else {
                     tasks = tasks.filter(task => task !== newItemText.textContent);
                     newItem.remove();
                 }
@@ -90,14 +90,14 @@ function createTask() {
 }
 
 // Function for clicking on the "Add" button
-function addTask() {
+addTask = () => {
     addTaskBtn.addEventListener("click", function() {
         createTask();        
     })
 }
 
 // Event llistener for if the user pushes the "Enter" key instead of pressing/clicking the "Add" icon/button
-input.addEventListener("keyup", function (e) {
+input.addEventListener("keyup", (e) => {
     if (e.key === "Enter") {
         createTask();
     }
